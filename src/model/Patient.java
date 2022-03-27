@@ -10,13 +10,14 @@ public class Patient {
     private Date    dateOfBirth;
     private int     phone;
     private String  email;
+    private String  address;
     private String  allergies;
     private int     user_id;
 
     public Patient() {
     }
 
-    public Patient(int id, String surname, String name, String patronymic, Date dateOfBirth, int phone, String email, String allergies, int user_id) {
+    public Patient(int id, String surname, String name, String patronymic, Date dateOfBirth, int phone, String email, String address, String allergies, int user_id) {
         this.id = id;
         this.surname = surname;
         this.name = name;
@@ -24,6 +25,7 @@ public class Patient {
         this.dateOfBirth = dateOfBirth;
         this.phone = phone;
         this.email = email;
+        this.address = address;
         this.allergies = allergies;
         this.user_id = user_id;
     }
@@ -98,5 +100,13 @@ public class Patient {
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

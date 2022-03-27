@@ -22,9 +22,11 @@ import java.sql.Statement;
 import java.util.Locale;
 import java.util.Objects;
 
+import static sample.Main.alert;
+
 public class Controller {
     private Connect connect = null;
-    public  User user;
+    public static User user;
 
     @FXML
     public TextField login;
@@ -46,6 +48,7 @@ public class Controller {
 
     @FXML
     public void signup(ActionEvent actionEvent) {
+        //todo: implement sign up
     }
 
     @FXML
@@ -87,21 +90,9 @@ public class Controller {
                 throwables.printStackTrace();
                 alert(Alert.AlertType.ERROR, "Ошибка", "Некорректный логин или пароль");
             }
-
-
         } else {
             alert(Alert.AlertType.ERROR, "Ошибка", "Пустой логин или пароль");
         }
-    }
-
-    private void alert (Alert.AlertType alertType, String title, String text){
-        Alert alert = new Alert(alertType);
-
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(text);
-
-        alert.showAndWait();
     }
 
     private void closeAndOpenUserWindow(String type) {

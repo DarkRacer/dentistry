@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -19,5 +20,15 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static void alert(Alert.AlertType alertType, String title, String text){
+        Alert alert = new Alert(alertType);
+
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(text);
+
+        alert.showAndWait();
     }
 }
