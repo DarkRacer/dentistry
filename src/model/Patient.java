@@ -1,23 +1,23 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Patient {
     private int     id;
     private String  surname;
     private String  name;
     private String  patronymic;
-    private Date    dateOfBirth;
+    private LocalDate dateOfBirth;
     private int     phone;
     private String  email;
     private String  address;
     private String  allergies;
-    private int     user_id;
+    private int userId;
 
     public Patient() {
     }
 
-    public Patient(int id, String surname, String name, String patronymic, Date dateOfBirth, int phone, String email, String address, String allergies, int user_id) {
+    public Patient(int id, String surname, String name, String patronymic, LocalDate dateOfBirth, int phone, String email, String address, String allergies, int userId) {
         this.id = id;
         this.surname = surname;
         this.name = name;
@@ -27,7 +27,7 @@ public class Patient {
         this.email = email;
         this.address = address;
         this.allergies = allergies;
-        this.user_id = user_id;
+        this.userId = userId;
     }
 
     public int getId() {
@@ -62,11 +62,11 @@ public class Patient {
         this.patronymic = patronymic;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -94,12 +94,12 @@ public class Patient {
         this.allergies = allergies;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getAddress() {

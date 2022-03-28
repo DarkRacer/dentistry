@@ -1,6 +1,7 @@
 package client.info;
 
 import DB.Connect;
+import client.Client;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,16 +11,14 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import model.Patient;
 import sample.Controller;
 import sample.Main;
 
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.temporal.TemporalAccessor;
 import java.util.ResourceBundle;
 
 public class Info implements Initializable {
@@ -79,25 +78,16 @@ public class Info implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        try {
-            connect = new Connect();
-            Statement statement = connect.getConnection().createStatement();
-            final ResultSet resultSet = statement.executeQuery("select * from public.patient where patient.user_id =" + Controller.user.getId());
+        Patient patient = Client.getPatient();
 
-            while (resultSet.next()) {
-                patientId = resultSet.getInt("id");
-                name.setText(resultSet.getString("name"));
-                surname.setText(resultSet.getString("surname"));
-                patronymic.setText(resultSet.getString("patronymic"));
-                dateOfBirthday.setValue(LocalDate.from(resultSet.getDate("dateOfBirth").toLocalDate()));
-                phone.setText(resultSet.getString("phone"));
-                email.setText(resultSet.getString("email"));
-                allergies.setText(resultSet.getString("allergies"));
-
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        patientId = patient.getId();
+        name.setText(patient.getName());
+        surname.setText(patient.getSurname());
+        patronymic.setText(patient.getPatronymic());
+        dateOfBirthday.setValue(patient.getDateOfBirth());
+        phone.setText(String.valueOf(patient.getPhone()));
+        email.setText(patient.getEmail());
+        allergies.setText(patient.getAllergies());
     }
 
     @FXML
@@ -110,6 +100,7 @@ public class Info implements Initializable {
                 java.util.Date date =
                         java.util.Date.from(dateOfBirthday.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
                 java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
                 if (patientId != 0) {
                     statement.execute("update public.patient set surname ='" + surname.getText() +"'," +
                             " name ='" + name.getText() + "', patronymic = '" + patronymic.getText() + "', " +
@@ -120,9 +111,10 @@ public class Info implements Initializable {
                     statement.execute("insert into  public.patient (surname, name, patronymic, \"dateOfBirth\", phone, email, address, allergies, user_id) " +
                             "values ('" + surname.getText() + "', '" + name.getText() + "', '" + patronymic.getText() + "', '" +
                             sqlDate + "', " + phone.getText() + ", '" + email.getText() + "', '" + address.getText() + "', '" +
-                            allergies.getText() + "', " + Controller.user.getId() + ")");
+                            allergies.getText() + "', " + Controller.getUserFromCache().getId() + ")");
                 }
 
+                Client.updatePatientToCache();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }

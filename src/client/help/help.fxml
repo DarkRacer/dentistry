@@ -5,11 +5,11 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="307.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.help.Help">
    <children>
       <Label layoutX="14.0" layoutY="14.0" text="Опишите свою проблему" />
       <TextArea fx:id="complaints" layoutX="14.0" layoutY="32.0" prefHeight="200.0" prefWidth="570.0" />
       <Button fx:id="send" layoutX="14.0" layoutY="247.0" mnemonicParsing="false" onAction="#send" prefHeight="38.0" prefWidth="570.0" text="Отправить" />
+      <Label fx:id="error" layoutX="187.0" layoutY="284.0" text="Сначала заполните информацию о себе" textFill="RED" />
    </children>
 </AnchorPane>

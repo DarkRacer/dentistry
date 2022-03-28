@@ -26,7 +26,7 @@ import static sample.Main.alert;
 
 public class Controller {
     private Connect connect = null;
-    public static User user;
+    private static User user;
 
     @FXML
     public TextField login;
@@ -111,5 +111,9 @@ public class Controller {
         Stage.setResizable(false);
         Stage.centerOnScreen();
         Stage.show();
+    }
+
+    public static User getUserFromCache() {
+        return user;
     }
 }
