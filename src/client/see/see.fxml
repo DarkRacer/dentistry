@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="client.see.See"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.see.See">
+   <children>
+      <TableView fx:id="table" layoutX="14.0" layoutY="56.0" prefHeight="330.0" prefWidth="707.0">
+        <columns>
+          <TableColumn fx:id="doctorColumn" prefWidth="197.6000394821167" text="Врач" />
+          <TableColumn fx:id="serviceColumn" prefWidth="144.79991149902344" text="Услуга" />
+            <TableColumn fx:id="description" prefWidth="244.800048828125" text="Описание" />
+            <TableColumn fx:id="price" minWidth="7.199951171875" prefWidth="120.0" text="Цена" />
+        </columns>
+      </TableView>
+      <Label fx:id="serviceLabel" layoutX="14.0" layoutY="14.0" text="Услуга " />
+      <ComboBox fx:id="service" layoutX="59.0" layoutY="9.0" prefHeight="26.0" prefWidth="210.0" />
+      <Label fx:id="doctorLabel" layoutX="311.0" layoutY="14.0" text="Врач" />
+      <ComboBox fx:id="doctor" layoutX="347.0" layoutY="9.0" prefHeight="26.0" prefWidth="210.0" />
+      <Button fx:id="find" layoutX="597.0" layoutY="9.0" mnemonicParsing="false" onAction="#find" prefHeight="26.0" prefWidth="124.0" text="Найти" />
+   </children>
 </AnchorPane>
