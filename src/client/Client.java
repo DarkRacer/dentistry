@@ -83,7 +83,7 @@ public class Client implements Initializable {
             e.printStackTrace();
         }
         Stage.setTitle("Оплата услуг");
-        Stage.setScene(new Scene(root, 600, 400));
+        Stage.setScene(new Scene(root, 600, 292));
         Stage.setResizable(false);
         Stage.centerOnScreen();
         Stage.show();

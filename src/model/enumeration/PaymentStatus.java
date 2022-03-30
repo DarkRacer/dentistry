@@ -2,7 +2,8 @@ package model.enumeration;
 
 public enum PaymentStatus {
     NOT_PAID(1),
-    PAID(2);
+    PAID(2),
+    CHECK(3);
 
     private final int id;
 
