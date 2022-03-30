@@ -78,7 +78,7 @@ public class Client implements Initializable {
         Stage Stage = new Stage();
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("/pay/pay.fxml"));
+            root = FXMLLoader.load(getClass().getResource("pay/pay.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -94,12 +94,12 @@ public class Client implements Initializable {
         Stage Stage = new Stage();
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("/see/see.fxml"));
+            root = FXMLLoader.load(getClass().getResource("see/see.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
         Stage.setTitle("Посмотреть услуги и врачей");
-        Stage.setScene(new Scene(root, 600, 400));
+        Stage.setScene(new Scene(root, 738, 400));
         Stage.setResizable(false);
         Stage.centerOnScreen();
         Stage.show();
