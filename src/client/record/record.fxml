@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="238.0" prefWidth="578.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.record.Record">
+   <children>
+      <TableView fx:id="table" layoutX="14.0" layoutY="20.0" prefHeight="200.0" prefWidth="553.0">
+        <columns>
+          <TableColumn fx:id="doctor" prefWidth="266.39995098114014" text="Врач" />
+          <TableColumn fx:id="date" prefWidth="176.00006103515625" text="Дата" />
+            <TableColumn fx:id="time" prefWidth="111.20001220703125" text="Время" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

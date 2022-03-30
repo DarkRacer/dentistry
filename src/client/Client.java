@@ -36,6 +36,9 @@ public class Client implements Initializable {
     @FXML
     public Button see;
 
+    @FXML
+    public Button record;
+
     @Override
     public void initialize(URL url, ResourceBundle rb){
         updatePatientToCache();
@@ -83,7 +86,7 @@ public class Client implements Initializable {
             e.printStackTrace();
         }
         Stage.setTitle("Оплата услуг");
-        Stage.setScene(new Scene(root, 600, 292));
+        Stage.setScene(new Scene(root, 678, 292));
         Stage.setResizable(false);
         Stage.centerOnScreen();
         Stage.show();
@@ -100,6 +103,22 @@ public class Client implements Initializable {
         }
         Stage.setTitle("Посмотреть услуги и врачей");
         Stage.setScene(new Scene(root, 738, 400));
+        Stage.setResizable(false);
+        Stage.centerOnScreen();
+        Stage.show();
+    }
+
+    @FXML
+    public void record(ActionEvent actionEvent) {
+        Stage Stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("record/record.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage.setTitle("Ваши записи");
+        Stage.setScene(new Scene(root, 578, 238));
         Stage.setResizable(false);
         Stage.centerOnScreen();
         Stage.show();

@@ -94,6 +94,7 @@ public class See implements Initializable {
 
     @FXML
     public void find(ActionEvent actionEvent) {
+        servicesAndDoctors.clear();
         if (service.getValue() != null && !service.getValue().isEmpty()) {
             if (doctor.getValue() != null && !doctor.getValue().isEmpty()) {
                 try {
@@ -124,7 +125,7 @@ public class See implements Initializable {
                     Statement statement = connect.getConnection().createStatement();
 
                     final ResultSet resultSet = statement.executeQuery("" +
-                            "select CONCAT(doc.patronymic, ' ', doc.Name, ' ', doc.Surname) as doctor," +
+                            "select CONCAT(doc.surname, ' ', doc.Name, ' ', doc.patronymic) as doctor," +
                             "s.name," +
                             "s.description," +
                             "s.price" +

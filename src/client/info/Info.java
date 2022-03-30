@@ -114,6 +114,7 @@ public class Info implements Initializable {
                             allergies.getText() + "', " + Controller.getUserFromCache().getId() + ")");
                 }
 
+                Main.alert(Alert.AlertType.INFORMATION, "Успешно", "Информация успешно изменена");
                 Client.updatePatientToCache();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();

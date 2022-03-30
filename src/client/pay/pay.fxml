@@ -15,6 +15,6 @@
             <TableColumn fx:id="statusColumn" prefWidth="145.599853515625" text="Статус" />
         </columns>
       </TableView>
-      <Button fx:id="send" layoutX="431.0" layoutY="252.0" mnemonicParsing="false" onAction="#sendRequest" text="Отправить запрос на проверку оплаты" />
+      <Button fx:id="send" layoutX="11.0" layoutY="252.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="26.0" prefWidth="651.0" text="Отправить запрос на проверку оплаты" />
    </children>
 </AnchorPane>

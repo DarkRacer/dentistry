@@ -3,6 +3,7 @@ package client.pay;
 import java.time.LocalDate;
 
 public class PaymentDto {
+    private int id;
     private String doctor;
     private LocalDate date;
     private String  status;
@@ -11,7 +12,8 @@ public class PaymentDto {
     public PaymentDto() {
     }
 
-    public PaymentDto(String doctor, LocalDate date, String status, int price) {
+    public PaymentDto(int id, String doctor, LocalDate date, String status, int price) {
+        this.id = id;
         this.doctor = doctor;
         this.date = date;
         this.status = status;
@@ -48,5 +50,13 @@ public class PaymentDto {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
