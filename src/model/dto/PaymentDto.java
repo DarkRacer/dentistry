@@ -1,4 +1,4 @@
-package client.pay;
+package model.dto;
 
 import java.time.LocalDate;
 

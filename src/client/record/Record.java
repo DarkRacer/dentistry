@@ -2,7 +2,6 @@ package client.record;
 
 import DB.Connect;
 import client.Client;
-import client.pay.PaymentDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,19 +9,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.enumeration.PaymentStatus;
+import model.dto.RecordDto;
 
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.ZoneOffset;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Record implements Initializable {
@@ -70,7 +64,7 @@ public class Record implements Initializable {
     private void setTable (String doctorV, LocalDate dateV, LocalTime timeV){
         records.add(new RecordDto(doctorV, dateV, timeV));
 
-        doctor.setCellValueFactory(new PropertyValueFactory<RecordDto, String>("doctor"));
+        doctor.setCellValueFactory(new PropertyValueFactory<RecordDto, String>("fio"));
         date.setCellValueFactory(new PropertyValueFactory<RecordDto, LocalDate>("date"));
         time.setCellValueFactory(new PropertyValueFactory<RecordDto, LocalTime>("time"));
 

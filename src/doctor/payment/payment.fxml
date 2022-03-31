@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="559.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctor.payment.Payment">
+   <children>
+      <Button fx:id="save" layoutX="264.0" layoutY="519.0" mnemonicParsing="false" onAction="#save" text="Выставить" />
+      <TableView fx:id="table" layoutX="15.0" layoutY="23.0" prefHeight="200.0" prefWidth="570.0">
+        <columns>
+          <TableColumn fx:id="name" prefWidth="158.40002155303955" text="Услуга" />
+          <TableColumn fx:id="description" prefWidth="290.40003967285156" text="Описание" />
+            <TableColumn fx:id="price" prefWidth="120.800048828125" text="Цена" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tableRendered" layoutX="15.0" layoutY="283.0" prefHeight="184.0" prefWidth="570.0">
+         <columns>
+            <TableColumn fx:id="nameRendered" prefWidth="158.40002155303955" text="Услуга" />
+            <TableColumn fx:id="descriptionRendered" prefWidth="290.40003967285156" text="Описание" />
+            <TableColumn fx:id="priceRendered" prefWidth="120.800048828125" text="Цена" />
+         </columns>
+      </TableView>
+      <Label fx:id="yourLabel" layoutX="15.0" layoutY="5.0" text="Ваши услуги" />
+      <Label fx:id="renderedLabel" layoutX="15.0" layoutY="262.0" text="Оказанные услуги" />
+      <Button fx:id="remove" layoutX="319.0" layoutY="237.0" mnemonicParsing="false" onAction="#remove" text="Убрать" />
+      <Button fx:id="add" layoutX="228.0" layoutY="237.0" mnemonicParsing="false" onAction="#add" text="Добавить" />
+      <Label fx:id="sumLabel" layoutX="15.0" layoutY="478.0" text="Сумма:" />
+      <Label fx:id="sum" layoutX="83.0" layoutY="478.0" prefHeight="18.0" prefWidth="100.0" />
+   </children>
+</AnchorPane>

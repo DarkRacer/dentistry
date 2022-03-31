@@ -1,4 +1,4 @@
-package client.see;
+package model.dto;
 
 public class ServicesAndDoctorModel {
     private String  doctor;

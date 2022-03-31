@@ -1,19 +1,19 @@
 package model;
 
-import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Schedule {
     private int     id;
-    private Date    date;
-    private Time    time;
+    private LocalDate date;
+    private LocalTime time;
     private int     idDoc;
     private int     idParent;
 
     public Schedule() {
     }
 
-    public Schedule(int id, Date date, Time time, int idDoc, int idParent) {
+    public Schedule(int id, LocalDate date, LocalTime time, int idDoc, int idParent) {
         this.id = id;
         this.date = date;
         this.time = time;
@@ -29,19 +29,19 @@ public class Schedule {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public Time getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 
