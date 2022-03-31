@@ -44,7 +44,7 @@ public class Record implements Initializable {
             connect = new Connect();
             Statement statement = connect.getConnection().createStatement();
 
-            final ResultSet resultSet = statement.executeQuery("select CONCAT(doc.patronymic, ' ', doc.Name, ' ', doc.Surname) as doctor," +
+            final ResultSet resultSet = statement.executeQuery("select CONCAT(doc.surname, ' ', doc.Name, ' ', doc.patronymic) as doctor," +
                     " sch.date," +
                     " sch.time" +
                     " from public.schedule sch" +

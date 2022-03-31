@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class PaymentDto {
     private int id;
-    private String doctor;
+    private String fio;
     private LocalDate date;
     private String  status;
     private int price;
@@ -12,20 +12,20 @@ public class PaymentDto {
     public PaymentDto() {
     }
 
-    public PaymentDto(int id, String doctor, LocalDate date, String status, int price) {
+    public PaymentDto(int id, String fio, LocalDate date, String status, int price) {
         this.id = id;
-        this.doctor = doctor;
+        this.fio = fio;
         this.date = date;
         this.status = status;
         this.price = price;
     }
 
-    public String getDoctor() {
-        return doctor;
+    public String getFio() {
+        return fio;
     }
 
-    public void setDoctor(String doctor) {
-        this.doctor = doctor;
+    public void setFio(String fio) {
+        this.fio = fio;
     }
 
     public LocalDate getDate() {

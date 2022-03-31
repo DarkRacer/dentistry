@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="327.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="administrator.payment.Payment">
+    <children>
+        <TableView fx:id="table" layoutX="12.0" layoutY="14.0" prefHeight="230.0" prefWidth="651.0">
+            <columns>
+                <TableColumn fx:id="clientColumn" prefWidth="154.3999605178833" text="Клиент" />
+                <TableColumn fx:id="dateColumn" prefWidth="183.20001220703125" text="Дата оказания услуг" />
+                <TableColumn fx:id="priceColumn" prefWidth="172.00003051757812" text="Сумма" />
+                <TableColumn fx:id="statusColumn" prefWidth="145.599853515625" text="Статус" />
+            </columns>
+        </TableView>
+        <Button fx:id="success" layoutX="11.0" layoutY="252.0" mnemonicParsing="false" onAction="#success" prefHeight="26.0" prefWidth="651.0" text="Оплачено" />
+      <Button fx:id="failed" layoutX="11.0" layoutY="287.0" mnemonicParsing="false" onAction="#failed" prefHeight="26.0" prefWidth="651.0" text="Не оплачено" />
+    </children>
+</AnchorPane>

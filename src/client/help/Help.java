@@ -39,6 +39,7 @@ public class Help implements Initializable {
             send.setDisable(true);
             error.setVisible(true);
         }
+        complaints.setWrapText(true);
     }
 
 
@@ -49,8 +50,8 @@ public class Help implements Initializable {
                 connect = new Connect();
                 Statement statement = connect.getConnection().createStatement();
 
-                statement.execute("insert into public.call_log (complaints, \"dateOfRequest\", \"idPatient\") " +
-                        "values ('" + complaints.getText() + "', '" + Date.valueOf(LocalDate.now()) + "', " + Client.getPatient().getId() + ")");
+                statement.execute("insert into public.call_log (complaints, \"dateOfRequest\", \"idPatient\", is_new) " +
+                        "values ('" + complaints.getText() + "', '" + Date.valueOf(LocalDate.now()) + "', " + Client.getPatient().getId() + ", true)");
 
                 Main.alert(Alert.AlertType.INFORMATION, "Успешно", "Ваша заявка успешно подана");
                 Stage stage = (Stage) send.getScene().getWindow();

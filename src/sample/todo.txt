@@ -1,2 +1,4 @@
 sign up
 handle error
+сменить пароль
+open dialog

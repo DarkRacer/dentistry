@@ -7,7 +7,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="504.0" prefWidth="325.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.info.Info">
    <children>
       <Button fx:id="save" layoutX="67.0" layoutY="444.0" mnemonicParsing="false" onAction="#save" prefHeight="36.0" prefWidth="191.0" text="Сохранить" />
@@ -22,7 +21,7 @@
       <Label fx:id="addressLabel" layoutX="12.0" layoutY="238.0" prefHeight="18.0" prefWidth="51.0" text="Адрес" />
       <Label fx:id="emailLabel" layoutX="12.0" layoutY="201.0" prefHeight="18.0" prefWidth="51.0" text="E-mail" />
       <Label fx:id="allergiesLabel" layoutX="12.0" layoutY="277.0" text="Алергии" />
-      <DatePicker fx:id="dateOfBirthday" layoutX="96.0" layoutY="124.0" prefHeight="26.0" prefWidth="200.0" />
+      <DatePicker fx:id="dateOfBirthday" layoutX="124.0" layoutY="124.0" prefHeight="26.0" prefWidth="172.0" />
       <TextField fx:id="phone" layoutX="96.0" layoutY="158.0" prefHeight="26.0" prefWidth="200.0" />
       <TextField fx:id="email" layoutX="96.0" layoutY="197.0" prefHeight="26.0" prefWidth="200.0" />
       <TextField fx:id="address" layoutX="96.0" layoutY="234.0" prefHeight="26.0" prefWidth="200.0" />

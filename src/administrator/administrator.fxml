@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="administrator.Administrator">
+   <children>
+      <Button fx:id="record" layoutX="26.0" layoutY="28.0" mnemonicParsing="false" onAction="#record" text="Назначение записей" />
+      <Button fx:id="pay" layoutX="231.0" layoutY="28.0" mnemonicParsing="false" onAction="#pay" text="Проверка оплат" />
+      <Button fx:id="create" layoutX="26.0" layoutY="90.0" mnemonicParsing="false" onAction="#create" text="Создать пользователя" />
+      <Button fx:id="see" layoutX="231.0" layoutY="90.0" mnemonicParsing="false" onAction="#see" text="Посмотреть услуги" />
+      <Button fx:id="schedule" layoutX="26.0" layoutY="144.0" mnemonicParsing="false" onAction="#schedule" text="Посмотреть график" />
+   </children>
+</AnchorPane>

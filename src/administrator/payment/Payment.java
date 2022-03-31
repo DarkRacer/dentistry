@@ -1,4 +1,4 @@
-package client.pay;
+package administrator.payment;
 
 import DB.Connect;
 import client.Client;
@@ -24,7 +24,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class Pay implements Initializable {
+public class Payment implements Initializable {
     private Connect connect = null;
     private ObservableList<PaymentDto> payments = FXCollections.observableArrayList();
 
@@ -32,7 +32,7 @@ public class Pay implements Initializable {
     public TableView<PaymentDto> table;
 
     @FXML
-    public TableColumn<PaymentDto, String> doctorColumn;
+    public TableColumn<PaymentDto, String> clientColumn;
 
     @FXML
     public TableColumn<PaymentDto, LocalDate> dateColumn;
@@ -44,35 +44,14 @@ public class Pay implements Initializable {
     public TableColumn<PaymentDto, Integer> priceColumn;
 
     @FXML
-    public Button send;
+    public Button success;
+
+    @FXML
+    public Button failed;
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
         updatePayments();
-    }
-
-    @FXML
-    public void sendRequest(ActionEvent actionEvent) {
-        PaymentDto paymentDto = table.getSelectionModel().getSelectedItem();
-
-        if (paymentDto != null) {
-            if (!Objects.equals(paymentDto.getStatus(), "Оплачено")) {
-                try {
-                    connect = new Connect();
-                    Statement statement = connect.getConnection().createStatement();
-
-                    statement.execute("update payment set status = 3 where id = " + paymentDto.getId());
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-
-                updatePayments();
-            } else {
-                Main.alert(Alert.AlertType.ERROR, "Ошибка", "Эта запись уже оплачена");
-            }
-        } else {
-            Main.alert(Alert.AlertType.ERROR, "Ошибка", "Выберите запись");
-        }
     }
 
     private void updatePayments() {
@@ -82,16 +61,15 @@ public class Pay implements Initializable {
             connect = new Connect();
             Statement statement = connect.getConnection().createStatement();
 
-            final ResultSet resultSet = statement.executeQuery("select p.id, CONCAT(doc.surname, ' ', doc.Name, ' ', doc.patronymic) as doctor," +
+            final ResultSet resultSet = statement.executeQuery("select p.id, CONCAT(pat.surname, ' ', pat.Name, ' ', pat.patronymic) as patient," +
                     "sch.date," +
                     "ps.name," +
                     "p.sum" +
                     " from public.payment p" +
                     " left join public.schedule sch on sch.id = p.\"idRecord\" " +
-                    " left join public.doctor doc on doc.id = sch.\"idDoc\" " +
                     " left join public.patient pat on pat.id = sch.\"idPatient\" " +
                     " left join public.payment_status ps on p.status = ps.id" +
-                    " where pat.id = " + Client.getPatient().getId());
+                    " where ps.id != 2");
 
             while (resultSet.next()) {
                 String status = "";
@@ -99,9 +77,8 @@ public class Pay implements Initializable {
                     status = "Не оплачено";
                 } else if (Objects.equals(resultSet.getString(4), PaymentStatus.CHECK.name())) {
                     status = "Проверяется";
-                } else if (Objects.equals(resultSet.getString(4), PaymentStatus.PAID.name())){
-                    status = "Оплачено";
                 }
+
                 setTable(resultSet.getInt(1), resultSet.getString(2),
                         LocalDate.from(resultSet.getDate(3).toLocalDate()), status, resultSet.getInt(5));
             }
@@ -114,11 +91,51 @@ public class Pay implements Initializable {
     private void setTable (int id, String doctor, LocalDate date, String status, int price){
         payments.add(new PaymentDto(id, doctor, date, status, price));
 
-        doctorColumn.setCellValueFactory(new PropertyValueFactory<PaymentDto, String>("fio"));
+        clientColumn.setCellValueFactory(new PropertyValueFactory<PaymentDto, String>("fio"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<PaymentDto, LocalDate>("date"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<PaymentDto, String>("status"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<PaymentDto, Integer>("price"));
 
         table.setItems(payments);
+    }
+
+    @FXML
+    public void failed(ActionEvent actionEvent) {
+        PaymentDto paymentDto = table.getSelectionModel().getSelectedItem();
+
+        if (paymentDto != null) {
+            try {
+                connect = new Connect();
+                Statement statement = connect.getConnection().createStatement();
+
+                statement.execute("update payment set status = 1 where id = " + paymentDto.getId());
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
+            updatePayments();
+        } else {
+            Main.alert(Alert.AlertType.ERROR, "Ошибка", "Выберите запись");
+        }
+    }
+
+    @FXML
+    public void success(ActionEvent actionEvent) {
+        PaymentDto paymentDto = table.getSelectionModel().getSelectedItem();
+
+        if (paymentDto != null) {
+            try {
+                connect = new Connect();
+                Statement statement = connect.getConnection().createStatement();
+
+                statement.execute("update payment set status = 2 where id = " + paymentDto.getId());
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
+            updatePayments();
+        } else {
+            Main.alert(Alert.AlertType.ERROR, "Ошибка", "Выберите запись");
+        }
     }
 }

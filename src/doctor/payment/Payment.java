@@ -119,6 +119,19 @@ public class Payment implements Initializable {
 
                 Main.alert(Alert.AlertType.INFORMATION, "Успешно", "Счёт успешно выставлен");
 
+                Statement statement1 = connect.getConnection().createStatement();
+                final ResultSet resultSet = statement1.executeQuery("select sch.\"idPatient\" from public.schedule sch where sch.id =" +Doctor.getRecord().getId());
+
+                int idPatient = 0;
+                while(resultSet.next()) {
+                    idPatient = resultSet.getInt(1);
+                }
+
+                if (idPatient != 0) {
+                    Statement statement2 = connect.getConnection().createStatement();
+                    statement2.execute("update public.call_log  set is_new = false where \"idPatient\" =" + idPatient);
+                }
+
                 Stage stage = (Stage) save.getScene().getWindow();
                 stage.close();
                 Stage Stage = new Stage();
