@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import model.Patient;
 import sample.Controller;
@@ -39,25 +40,38 @@ public class Client implements Initializable {
     @FXML
     public Button record;
 
+    @FXML
+    public Label error;
+
     @Override
     public void initialize(URL url, ResourceBundle rb){
         updatePatientToCache();
+        error.setVisible(false);
+        if (patient == null) {
+            help.setDisable(true);
+            record.setDisable(true);
+            help.setDisable(true);
+            error.setVisible(true);
+            pay.setDisable(true);
+        }
     }
 
     @FXML
     public void help(ActionEvent actionEvent) {
-        Stage Stage = new Stage();
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("help/help.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (patient != null) {
+            Stage Stage = new Stage();
+            Parent root = null;
+            try {
+                root = FXMLLoader.load(getClass().getResource("help/help.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Stage.setTitle("Обратиться за помощью");
+            Stage.setScene(new Scene(root, 600, 307));
+            Stage.setResizable(false);
+            Stage.centerOnScreen();
+            Stage.show();
         }
-        Stage.setTitle("Обратиться за помощью");
-        Stage.setScene(new Scene(root, 600, 307));
-        Stage.setResizable(false);
-        Stage.centerOnScreen();
-        Stage.show();
     }
 
     @FXML
@@ -78,18 +92,20 @@ public class Client implements Initializable {
 
     @FXML
     public void pay(ActionEvent actionEvent) {
-        Stage Stage = new Stage();
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("pay/pay.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(patient != null) {
+            Stage Stage = new Stage();
+            Parent root = null;
+            try {
+                root = FXMLLoader.load(getClass().getResource("pay/pay.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Stage.setTitle("Оплата услуг");
+            Stage.setScene(new Scene(root, 678, 292));
+            Stage.setResizable(false);
+            Stage.centerOnScreen();
+            Stage.show();
         }
-        Stage.setTitle("Оплата услуг");
-        Stage.setScene(new Scene(root, 678, 292));
-        Stage.setResizable(false);
-        Stage.centerOnScreen();
-        Stage.show();
     }
 
     @FXML
@@ -110,18 +126,20 @@ public class Client implements Initializable {
 
     @FXML
     public void record(ActionEvent actionEvent) {
-        Stage Stage = new Stage();
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("record/record.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (patient != null) {
+            Stage Stage = new Stage();
+            Parent root = null;
+            try {
+                root = FXMLLoader.load(getClass().getResource("record/record.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Stage.setTitle("Ваши записи");
+            Stage.setScene(new Scene(root, 578, 238));
+            Stage.setResizable(false);
+            Stage.centerOnScreen();
+            Stage.show();
         }
-        Stage.setTitle("Ваши записи");
-        Stage.setScene(new Scene(root, 578, 238));
-        Stage.setResizable(false);
-        Stage.centerOnScreen();
-        Stage.show();
     }
 
     public static void updatePatientToCache() {

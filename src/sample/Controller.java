@@ -48,7 +48,18 @@ public class Controller {
 
     @FXML
     public void signup(ActionEvent actionEvent) {
-        //todo: implement sign up
+        Stage Stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("signup/signup.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage.setTitle("Регистрация");
+        Stage.setScene(new Scene(root, 341, 162));
+        Stage.setResizable(false);
+        Stage.centerOnScreen();
+        Stage.show();
     }
 
     @FXML

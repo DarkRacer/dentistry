@@ -77,17 +77,18 @@ public class Info implements Initializable {
     public TextArea allergies;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb){
-        Patient patient = Client.getPatient();
-
-        patientId = patient.getId();
-        name.setText(patient.getName());
-        surname.setText(patient.getSurname());
-        patronymic.setText(patient.getPatronymic());
-        dateOfBirthday.setValue(patient.getDateOfBirth());
-        phone.setText(String.valueOf(patient.getPhone()));
-        email.setText(patient.getEmail());
-        allergies.setText(patient.getAllergies());
+    public void initialize(URL url, ResourceBundle rb) {
+        if (Client.getPatient() != null){
+            Patient patient = Client.getPatient();
+            patientId = patient.getId();
+            name.setText(patient.getName());
+            surname.setText(patient.getSurname());
+            patronymic.setText(patient.getPatronymic());
+            dateOfBirthday.setValue(patient.getDateOfBirth());
+            phone.setText(String.valueOf(patient.getPhone()));
+            email.setText(patient.getEmail());
+            allergies.setText(patient.getAllergies());
+    }
     }
 
     @FXML

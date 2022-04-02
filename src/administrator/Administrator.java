@@ -99,8 +99,8 @@ public class Administrator {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Stage.setTitle("Создание пользователя");
-        Stage.setScene(new Scene(root, 319, 570));
+        Stage.setTitle("График");
+        Stage.setScene(new Scene(root, 600, 400));
         Stage.setResizable(false);
         Stage.centerOnScreen();
         Stage.show();

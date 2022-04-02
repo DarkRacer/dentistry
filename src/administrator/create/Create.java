@@ -11,6 +11,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.Main;
+import sample.signup.Signup;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -86,7 +87,7 @@ public class Create {
     @FXML
     public void save(ActionEvent actionEvent) {
         String err;
-        if (!isUniqueLogin()) {
+        if (!Signup.isUniqueLogin(login.getText())) {
             err = "Такой логин уже существует";
         } else {
             err = validate();
@@ -151,23 +152,5 @@ public class Create {
             return "Обязательное поле 'Логин' пусто";
         }
         return null;
-    }
-
-    private boolean isUniqueLogin() {
-        try {
-            connect = new Connect();
-
-            Statement statement = connect.getConnection().createStatement();
-            final ResultSet resultSet = statement.executeQuery("select u.id from public.\"user\" u where login = '" + login.getText() + "'");
-
-            while (resultSet.next()) {
-                if (resultSet.getInt(1) != 0) {
-                    return false;
-                }
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        return true;
     }
 }

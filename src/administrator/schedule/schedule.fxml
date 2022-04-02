@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="administrator.Record"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="administrator.schedule.Schedule">
+
+    <children>
+        <TableView fx:id="table" layoutX="12.0" layoutY="14.0" prefHeight="315.0" prefWidth="574.0">
+            <columns>
+                <TableColumn fx:id="patientColumn" prefWidth="296.79997539520264" text="Пациент" />
+                <TableColumn fx:id="dateColumn" minWidth="0.0" prefWidth="128.79998779296875" text="Дата" />
+                <TableColumn fx:id="timeColumn" prefWidth="148.0" text="Время" />
+            </columns>
+        </TableView>
+      <Label fx:id="dateLabel" layoutX="12.0" layoutY="347.0" text="Выберите дату" />
+      <DatePicker fx:id="date" layoutX="122.0" layoutY="343.0" prefHeight="26.0" prefWidth="207.0" />
+      <Button fx:id="see" layoutX="378.0" layoutY="343.0" mnemonicParsing="false" onAction="#see" prefHeight="26.0" prefWidth="207.0" text="Показать" />
+    </children>
 
 </AnchorPane>
