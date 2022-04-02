@@ -1,4 +1,4 @@
-package sample.signup;
+package owner.admin.create;
 
 import DB.Connect;
 import javafx.event.ActionEvent;
@@ -11,11 +11,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.Main;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Signup {
+import static sample.signup.Signup.isUniqueLogin;
+
+public class Create {
     private static Connect connect;
 
     @FXML
@@ -53,10 +54,10 @@ public class Signup {
 
                 Statement statement = connect.getConnection().createStatement();
                 statement.execute("insert into  public.\"user\" (login, password, type) " +
-                        "values ('" + login.getText() + "', '" + password.getText() + "', 1)");
+                        "values ('" + login.getText() + "', '" + password.getText() + "', 3)");
 
 
-                Main.alert(Alert.AlertType.INFORMATION, "Успешно", "Пользователь создан");
+                Main.alert(Alert.AlertType.INFORMATION, "Успешно", "Администратор создан");
                 Stage stage = (Stage) create.getScene().getWindow();
                 stage.close();
             } catch (SQLException throwables) {
@@ -77,23 +78,5 @@ public class Signup {
             return "Пароли не совпадают";
         }
         return null;
-    }
-
-    public static boolean isUniqueLogin(String login) {
-        try {
-            connect = new Connect();
-
-            Statement statement = connect.getConnection().createStatement();
-            final ResultSet resultSet = statement.executeQuery("select u.id from public.\"user\" u where login = '" + login + "'");
-
-            while (resultSet.next()) {
-                if (resultSet.getInt(1) != 0) {
-                    return false;
-                }
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        return true;
     }
 }

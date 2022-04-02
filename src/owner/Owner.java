@@ -31,11 +31,34 @@ public class Owner {
 
     @FXML
     public void doctor(ActionEvent actionEvent) {
+        Stage Stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("doctor/doctor.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage.setTitle("Врачи");
+        Stage.setScene(new Scene(root, 810, 338));
+        Stage.setResizable(false);
+        Stage.centerOnScreen();
+        Stage.show();
     }
 
     @FXML
     public void admin(ActionEvent actionEvent) {
-
+        Stage Stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("admin/admin.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage.setTitle("Администраторы");
+        Stage.setScene(new Scene(root, 261, 303));
+        Stage.setResizable(false);
+        Stage.centerOnScreen();
+        Stage.show();
     }
 
     @FXML
@@ -88,6 +111,17 @@ public class Owner {
 
     @FXML
     public void services(ActionEvent actionEvent) {
-
+        Stage Stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("services/services.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage.setTitle("Услуги");
+        Stage.setScene(new Scene(root, 630, 400));
+        Stage.setResizable(false);
+        Stage.centerOnScreen();
+        Stage.show();
     }
 }

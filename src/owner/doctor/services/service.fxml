@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="554.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="owner.doctor.services.Service">
+    <children>
+        <Button fx:id="save" layoutX="233.0" layoutY="513.0" mnemonicParsing="false" onAction="#save" prefHeight="26.0" prefWidth="134.0" text="Сохранить" />
+        <TableView fx:id="table" layoutX="15.0" layoutY="23.0" prefHeight="230.0" prefWidth="570.0">
+            <columns>
+                <TableColumn fx:id="name" prefWidth="158.40002155303955" text="Услуга" />
+                <TableColumn fx:id="description" prefWidth="290.40003967285156" text="Описание" />
+                <TableColumn fx:id="price" prefWidth="120.800048828125" text="Цена" />
+            </columns>
+        </TableView>
+        <TableView fx:id="tableRendered" layoutX="15.0" layoutY="315.0" prefHeight="184.0" prefWidth="570.0">
+            <columns>
+                <TableColumn fx:id="nameRendered" prefWidth="158.40002155303955" text="Услуга" />
+                <TableColumn fx:id="descriptionRendered" prefWidth="290.40003967285156" text="Описание" />
+                <TableColumn fx:id="priceRendered" prefWidth="120.800048828125" text="Цена" />
+            </columns>
+        </TableView>
+        <Label fx:id="yourLabel" layoutX="15.0" layoutY="5.0" text="Услуги " />
+        <Label fx:id="renderedLabel" layoutX="14.0" layoutY="297.0" text="Услуги которые оказывает" />
+        <Button fx:id="remove" layoutX="319.0" layoutY="263.0" mnemonicParsing="false" onAction="#remove" prefHeight="26.0" prefWidth="134.0" text="Убрать" />
+        <Button fx:id="add" layoutX="166.0" layoutY="263.0" mnemonicParsing="false" onAction="#add" prefHeight="26.0" prefWidth="134.0" text="Добавить" />
+      <Label fx:id="doctor" layoutX="241.0" layoutY="296.0" prefHeight="18.0" prefWidth="262.0" />
+    </children>
+</AnchorPane>

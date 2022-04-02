@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="338.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="owner.doctor.Doctor">
+   <children>
+      <TableView fx:id="table" layoutX="14.0" layoutY="14.0" prefHeight="254.0" prefWidth="780.0">
+        <columns>
+          <TableColumn fx:id="nameColumn" prefWidth="252.00007343292236" text="Имя" />
+          <TableColumn fx:id="specColumn" minWidth="2.4000244140625" prefWidth="213.5999755859375" text="Специализация" />
+            <TableColumn fx:id="phoneColumn" prefWidth="146.4000244140625" text="Телефон" />
+            <TableColumn fx:id="emailColumn" prefWidth="166.39990234375" text="E-mail" />
+        </columns>
+      </TableView>
+      <Button fx:id="create" layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onAction="#create" prefHeight="32.0" prefWidth="152.0" text="Добавить" />
+      <Button fx:id="change" layoutX="222.0" layoutY="285.0" mnemonicParsing="false" onAction="#change" prefHeight="32.0" prefWidth="152.0" text="Изменить" />
+      <Button fx:id="services" layoutX="432.0" layoutY="285.0" mnemonicParsing="false" onAction="#services" prefHeight="32.0" prefWidth="152.0" text="Услуги врача" />
+      <Button fx:id="delete" layoutX="642.0" layoutY="285.0" mnemonicParsing="false" onAction="#delete" prefHeight="32.0" prefWidth="152.0" text="Удалить" />
+   </children>
+</AnchorPane>

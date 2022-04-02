@@ -120,7 +120,7 @@ public class Complaints implements Initializable {
                 statement.execute("insert into  public.schedule (date, time, \"idDoc\", \"idPatient\") " +
                         "values ('" + sqlDate + "', '" + time.getText() + "', " + doctor.getId() + ", " + patient.getId() + ")");
 
-                //check from schedule for err
+                // todo check from schedule for err
                 Statement statement2 = connect.getConnection().createStatement();
                 statement2.execute("update public.call_log  set is_new = false where id =" + patient.getComplId());
 
