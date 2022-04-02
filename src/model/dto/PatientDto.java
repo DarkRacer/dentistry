@@ -6,7 +6,7 @@ public class PatientDto {
     private int id;
     private String fio;
     private LocalDate dateOfBirth;
-    private int phone;
+    private String phone;
     private String email;
     private String allergies;
     private String address;
@@ -14,7 +14,7 @@ public class PatientDto {
     public PatientDto() {
     }
 
-    public PatientDto(int id, String fio, LocalDate dateOfBirth, int phone, String email, String allergies, String address) {
+    public PatientDto(int id, String fio, LocalDate dateOfBirth, String phone, String email, String allergies, String address) {
         this.id = id;
         this.fio = fio;
         this.dateOfBirth = dateOfBirth;
@@ -48,11 +48,11 @@ public class PatientDto {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

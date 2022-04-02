@@ -8,7 +8,7 @@ public class Patient {
     private String  name;
     private String  patronymic;
     private LocalDate dateOfBirth;
-    private int     phone;
+    private String     phone;
     private String  email;
     private String  address;
     private String  allergies;
@@ -17,7 +17,7 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(int id, String surname, String name, String patronymic, LocalDate dateOfBirth, int phone, String email, String address, String allergies, int userId) {
+    public Patient(int id, String surname, String name, String patronymic, LocalDate dateOfBirth, String phone, String email, String address, String allergies, int userId) {
         this.id = id;
         this.surname = surname;
         this.name = name;
@@ -70,11 +70,11 @@ public class Patient {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

@@ -20,6 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.dto.ComplaintsDto;
 import sample.Main;
+import sun.security.mscapi.CKeyPairGenerator;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,6 +28,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Complaints implements Initializable {
@@ -116,29 +119,41 @@ public class Complaints implements Initializable {
                         java.util.Date.from(date.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
                 java.sql.Date sqlDate = new java.sql.Date(dateConvert.getTime());
 
-                Statement statement = connect.getConnection().createStatement();
-                statement.execute("insert into  public.schedule (date, time, \"idDoc\", \"idPatient\") " +
-                        "values ('" + sqlDate + "', '" + time.getText() + "', " + doctor.getId() + ", " + patient.getId() + ")");
+                Statement statementForCheck = connect.getConnection().createStatement();
+                final ResultSet resultSetForCheck = statementForCheck.executeQuery("select * from public.schedule " +
+                        "where \"idDoc\" =" + doctor.getId() + " and date = '" + sqlDate + "' and time = '" + time.getText() + "'");
 
-                // todo check from schedule for err
-                Statement statement2 = connect.getConnection().createStatement();
-                statement2.execute("update public.call_log  set is_new = false where id =" + patient.getComplId());
-
-                Main.alert(Alert.AlertType.INFORMATION, "Успешно", "Пациент успешно записан");
-                Stage stage = (Stage) save.getScene().getWindow();
-                stage.close();
-                Stage Stage = new Stage();
-                Parent root = null;
-                try {
-                    root = FXMLLoader.load(getClass().getResource("complaints.fxml"));
-                } catch (IOException e) {
-                    e.printStackTrace();
+                List<String> ids = new ArrayList<>();
+                while (resultSetForCheck.next()) {
+                    ids.add(String.valueOf(resultSetForCheck.getInt(1)));
                 }
-                Stage.setTitle("Добро пожаловать");
-                Stage.setScene(new Scene(root, 600, 513));
-                Stage.setResizable(false);
-                Stage.centerOnScreen();
-                Stage.show();
+
+                if (ids.isEmpty()) {
+                    Statement statement = connect.getConnection().createStatement();
+                    statement.execute("insert into  public.schedule (date, time, \"idDoc\", \"idPatient\") " +
+                            "values ('" + sqlDate + "', '" + time.getText() + "', " + doctor.getId() + ", " + patient.getId() + ")");
+
+                    Statement statement2 = connect.getConnection().createStatement();
+                    statement2.execute("update public.call_log  set is_new = false where id =" + patient.getComplId());
+
+                    Main.alert(Alert.AlertType.INFORMATION, "Успешно", "Пациент успешно записан");
+                    Stage stage = (Stage) save.getScene().getWindow();
+                    stage.close();
+                    Stage Stage = new Stage();
+                    Parent root = null;
+                    try {
+                        root = FXMLLoader.load(getClass().getResource("complaints.fxml"));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Stage.setTitle("Добро пожаловать");
+                    Stage.setScene(new Scene(root, 600, 513));
+                    Stage.setResizable(false);
+                    Stage.centerOnScreen();
+                    Stage.show();
+                } else {
+                    Main.alert(Alert.AlertType.ERROR, "Ошибка", "У врача уже есть запись на это время");
+                }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }

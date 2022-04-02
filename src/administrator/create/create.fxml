@@ -7,28 +7,30 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="570.0" prefWidth="319.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="administrator.create.Create">
+<AnchorPane prefHeight="601.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="administrator.create.Create">
     <children>
-        <Button fx:id="save" layoutX="64.0" layoutY="520.0" mnemonicParsing="false" onAction="#save" prefHeight="36.0" prefWidth="191.0" text="Сохранить" />
-        <TextField fx:id="name" layoutX="97.0" layoutY="10.0" prefHeight="26.0" prefWidth="200.0" />
+        <Button fx:id="save" layoutX="89.0" layoutY="551.0" mnemonicParsing="false" onAction="#save" prefHeight="36.0" prefWidth="191.0" text="Сохранить" />
+        <TextField fx:id="name" layoutX="156.0" layoutY="9.0" prefHeight="26.0" prefWidth="200.0" />
         <Label fx:id="nameLabel" layoutX="14.0" layoutY="14.0" text="Имя" />
         <Label fx:id="surnameLabel" layoutX="13.0" layoutY="54.0" text="Фамилия" />
-        <TextField fx:id="surname" layoutX="97.0" layoutY="50.0" prefHeight="26.0" prefWidth="200.0" />
-        <TextField fx:id="patronymic" layoutX="97.0" layoutY="90.0" prefHeight="26.0" prefWidth="200.0" />
+        <TextField fx:id="surname" layoutX="156.0" layoutY="49.0" prefHeight="26.0" prefWidth="200.0" />
+        <TextField fx:id="patronymic" layoutX="156.0" layoutY="89.0" prefHeight="26.0" prefWidth="200.0" />
         <Label fx:id="patronymicLabel" layoutX="12.0" layoutY="94.0" text="Отчество" />
         <Label fx:id="dateOfBirthdayLabel" layoutX="9.0" layoutY="129.0" text="Дата рождения" />
         <Label fx:id="phoneLabel" layoutX="11.0" layoutY="162.0" text="Телефон" />
         <Label fx:id="addressLabel" layoutX="12.0" layoutY="238.0" prefHeight="18.0" prefWidth="51.0" text="Адрес" />
         <Label fx:id="emailLabel" layoutX="12.0" layoutY="201.0" prefHeight="18.0" prefWidth="51.0" text="E-mail" />
         <Label fx:id="allergiesLabel" layoutX="12.0" layoutY="277.0" text="Алергии" />
-        <DatePicker fx:id="dateOfBirthday" layoutX="123.0" layoutY="124.0" prefHeight="26.0" prefWidth="173.0" />
-        <TextField fx:id="phone" layoutX="96.0" layoutY="158.0" prefHeight="26.0" prefWidth="200.0" />
-        <TextField fx:id="email" layoutX="96.0" layoutY="197.0" prefHeight="26.0" prefWidth="200.0" />
-        <TextField fx:id="address" layoutX="96.0" layoutY="234.0" prefHeight="26.0" prefWidth="200.0" />
-        <TextArea fx:id="allergies" layoutX="97.0" layoutY="277.0" prefHeight="150.0" prefWidth="200.0" />
+        <DatePicker fx:id="dateOfBirthday" layoutX="156.0" layoutY="124.0" prefHeight="26.0" prefWidth="200.0" />
+        <TextField fx:id="phone" layoutX="156.0" layoutY="157.0" prefHeight="26.0" prefWidth="200.0" />
+        <TextField fx:id="email" layoutX="156.0" layoutY="197.0" prefHeight="26.0" prefWidth="200.0" />
+        <TextField fx:id="address" layoutX="156.0" layoutY="234.0" prefHeight="26.0" prefWidth="200.0" />
+        <TextArea fx:id="allergies" layoutX="156.0" layoutY="277.0" prefHeight="150.0" prefWidth="200.0" />
       <Label fx:id="loginLabel" layoutX="12.0" layoutY="448.0" text="Логин" />
-      <TextField fx:id="login" layoutX="97.0" layoutY="444.0" prefHeight="26.0" prefWidth="200.0" />
+      <TextField fx:id="login" layoutX="156.0" layoutY="443.0" prefHeight="26.0" prefWidth="200.0" />
       <Label fx:id="passwordLabel" layoutX="12.0" layoutY="484.0" text="Пароль" />
-      <TextField fx:id="password" layoutX="96.0" layoutY="479.0" prefHeight="26.0" prefWidth="200.0" />
+      <TextField fx:id="password" layoutX="156.0" layoutY="479.0" prefHeight="26.0" prefWidth="200.0" />
+      <TextField fx:id="password1" layoutX="156.0" layoutY="516.0" prefHeight="26.0" prefWidth="200.0" />
+      <Label fx:id="passwordLabel1" layoutX="12.0" layoutY="521.0" text="Повторите пароль" />
     </children>
 </AnchorPane>

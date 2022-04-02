@@ -12,14 +12,12 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import sample.Main;
 
-import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.util.ResourceBundle;
 
-public class Help implements Initializable {
+public class Help {
     private Connect connect;
 
     @FXML
@@ -30,17 +28,6 @@ public class Help implements Initializable {
 
     @FXML
     public Label error;
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb){
-        if (Client.getPatient() != null && Client.getPatient().getId() != 0) {
-            error.setVisible(false);
-        } else {
-            send.setDisable(true);
-            error.setVisible(true);
-        }
-        complaints.setWrapText(true);
-    }
 
 
     @FXML

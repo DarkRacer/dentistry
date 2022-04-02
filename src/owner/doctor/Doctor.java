@@ -43,7 +43,7 @@ public class Doctor implements Initializable {
     public TableColumn<DoctorDto, String> specColumn;
 
     @FXML
-    public TableColumn<DoctorDto, Integer> phoneColumn;
+    public TableColumn<DoctorDto, String> phoneColumn;
 
     @FXML
     public TableColumn<DoctorDto, String> emailColumn;
@@ -78,7 +78,7 @@ public class Doctor implements Initializable {
             e.printStackTrace();
         }
         Stage.setTitle("Добавление врача");
-        Stage.setScene(new Scene(root, 327, 435));
+        Stage.setScene(new Scene(root, 342, 435));
         Stage.setResizable(false);
         Stage.centerOnScreen();
         Stage.show();
@@ -180,7 +180,7 @@ public class Doctor implements Initializable {
 
             while (resultSet.next()) {
                 setTable(resultSet.getInt(1), resultSet.getString(2),
-                        resultSet.getString(3), resultSet.getInt(4), resultSet.getString(5));
+                        resultSet.getString(3), resultSet.getString(4), resultSet.getString(5));
             }
 
         } catch (SQLException throwables) {
@@ -188,12 +188,12 @@ public class Doctor implements Initializable {
         }
     }
 
-    private void setTable (int id, String fio, String specialization, int phone, String email){
+    private void setTable (int id, String fio, String specialization, String phone, String email){
         doctors.add(new DoctorDto(id, fio, specialization, phone, email));
 
         nameColumn.setCellValueFactory(new PropertyValueFactory<DoctorDto, String>("fio"));
         specColumn.setCellValueFactory(new PropertyValueFactory<DoctorDto, String>("specialization"));
-        phoneColumn.setCellValueFactory(new PropertyValueFactory<DoctorDto, Integer>("phone"));
+        phoneColumn.setCellValueFactory(new PropertyValueFactory<DoctorDto, String>("phone"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<DoctorDto, String>("email"));
 
         table.setItems(doctors);

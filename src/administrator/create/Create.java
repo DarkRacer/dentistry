@@ -17,9 +17,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.ZoneId;
+import java.util.Objects;
 
 public class Create {
     private Connect connect;
+
+    @FXML
+    public TextField password1;
+
+    @FXML
+    public Label passwordLabel1;
 
     @FXML
     public Button save;
@@ -117,7 +124,7 @@ public class Create {
 
                 statement2.execute("insert into  public.patient (surname, name, patronymic, \"dateOfBirth\", phone, email, address, allergies, user_id) " +
                         "values ('" + surname.getText() + "', '" + name.getText() + "', '" + patronymic.getText() + "', '" +
-                        sqlDate + "', " + phone.getText() + ", '" + email.getText() + "', '" + address.getText() + "', '" +
+                        sqlDate + "', '" + phone.getText() + "', '" + email.getText() + "', '" + address.getText() + "', '" +
                         allergies.getText() + "', " + userId + ")");
 
 
@@ -145,6 +152,10 @@ public class Create {
             return "Обязательное поле 'Логин' пусто";
         } else if (password.getText().isEmpty()) {
             return "Обязательное поле 'Логин' пусто";
+        } else if (password1.getText().isEmpty()) {
+            return "Повторите пароль";
+        } else if (!Objects.equals(password.getText(), password1.getText())) {
+            return "Пароли не совпадают";
         }
         return null;
     }

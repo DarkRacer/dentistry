@@ -6,7 +6,7 @@ public class Doctor {
     private String  surname;
     private String  name;
     private String  patronymic;
-    private int     phone;
+    private String     phone;
     private String  email;
     private String  specialization;
     private int     user_id;
@@ -14,7 +14,7 @@ public class Doctor {
     public Doctor() {
     }
 
-    public Doctor(int id, String surname, String name, String patronymic, int phone, String email, String specialization, int user_id) {
+    public Doctor(int id, String surname, String name, String patronymic, String phone, String email, String specialization, int user_id) {
         this.id = id;
         this.surname = surname;
         this.name = name;
@@ -57,11 +57,11 @@ public class Doctor {
         this.patronymic = patronymic;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

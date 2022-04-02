@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="186.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="owner.Owner">
+<AnchorPane prefHeight="219.0" prefWidth="401.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="owner.Owner">
    <children>
       <Button fx:id="doctor" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#doctor" prefHeight="36.0" prefWidth="170.0" text="Врачи" />
       <Button fx:id="admin" layoutX="215.0" layoutY="14.0" mnemonicParsing="false" onAction="#admin" prefHeight="36.0" prefWidth="170.0" text="Администраторы" />
@@ -12,5 +12,6 @@
       <Button fx:id="payment" layoutX="215.0" layoutY="123.0" mnemonicParsing="false" onAction="#payment" prefHeight="36.0" prefWidth="170.0" text="Оплаты" />
       <Button fx:id="complaints" layoutX="14.0" layoutY="123.0" mnemonicParsing="false" onAction="#complaints" prefHeight="36.0" prefWidth="170.0" text="Список жалоб" />
       <Button fx:id="services" layoutX="215.0" layoutY="68.0" mnemonicParsing="false" onAction="#services" prefHeight="36.0" prefWidth="170.0" text="Услуги" />
+      <Button fx:id="changePassword" layoutX="15.0" layoutY="177.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="26.0" prefWidth="370.0" text="Сменить пароль" />
    </children>
 </AnchorPane>

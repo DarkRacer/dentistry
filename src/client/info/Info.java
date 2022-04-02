@@ -85,7 +85,7 @@ public class Info implements Initializable {
             surname.setText(patient.getSurname());
             patronymic.setText(patient.getPatronymic());
             dateOfBirthday.setValue(patient.getDateOfBirth());
-            phone.setText(String.valueOf(patient.getPhone()));
+            phone.setText(patient.getPhone());
             email.setText(patient.getEmail());
             allergies.setText(patient.getAllergies());
     }
@@ -105,13 +105,13 @@ public class Info implements Initializable {
                 if (patientId != 0) {
                     statement.execute("update public.patient set surname ='" + surname.getText() +"'," +
                             " name ='" + name.getText() + "', patronymic = '" + patronymic.getText() + "', " +
-                            "\"dateOfBirth\" = '" + sqlDate + "', phone = " + phone.getText() +
-                            ", email = '"+ email.getText() + "', address = '" + address.getText() +
+                            "\"dateOfBirth\" = '" + sqlDate + "', phone = '" + phone.getText() +
+                            "', email = '"+ email.getText() + "', address = '" + address.getText() +
                             "', allergies = '" + allergies.getText() + "' where patient.id =" + patientId);
                 } else {
                     statement.execute("insert into  public.patient (surname, name, patronymic, \"dateOfBirth\", phone, email, address, allergies, user_id) " +
                             "values ('" + surname.getText() + "', '" + name.getText() + "', '" + patronymic.getText() + "', '" +
-                            sqlDate + "', " + phone.getText() + ", '" + email.getText() + "', '" + address.getText() + "', '" +
+                            sqlDate + "', '" + phone.getText() + "', '" + email.getText() + "', '" + address.getText() + "', '" +
                             allergies.getText() + "', " + Controller.getUserFromCache().getId() + ")");
                 }
 

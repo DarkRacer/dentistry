@@ -4,13 +4,13 @@ public class DoctorDto {
     private int id;
     private String fio;
     private String specialization;
-    private int phone;
+    private String phone;
     private String email;
 
     public DoctorDto() {
     }
 
-    public DoctorDto(int id, String fio, String specialization, int phone, String email) {
+    public DoctorDto(int id, String fio, String specialization, String phone, String email) {
         this.id = id;
         this.fio = fio;
         this.specialization = specialization;
@@ -42,11 +42,11 @@ public class DoctorDto {
         this.specialization = specialization;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

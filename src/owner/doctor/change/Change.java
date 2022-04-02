@@ -76,7 +76,7 @@ public class Change implements Initializable {
                 name.setText(resultSet.getString("name"));
                 surname.setText(resultSet.getString("surname"));
                 patronymic.setText(resultSet.getString("patronymic"));
-                phone.setText(String.valueOf(resultSet.getInt("phone")));
+                phone.setText(resultSet.getString("phone"));
                 email.setText(resultSet.getString("email"));
                 specialization.setText(resultSet.getString("specialization"));
             }
@@ -94,8 +94,8 @@ public class Change implements Initializable {
 
                 Statement statement = connect.getConnection().createStatement();
                 statement.execute("update public.doctor set name = '"+ name.getText() + "', surname = '" + surname.getText()
-                        + "', patronymic = '" + patronymic.getText() + "', phone = "+ Integer.parseInt(phone.getText())
-                        + " , email = '"+ email.getText() + "', specialization = '" + specialization.getText()
+                        + "', patronymic = '" + patronymic.getText() + "', phone = '"+ phone.getText()
+                        + "' , email = '"+ email.getText() + "', specialization = '" + specialization.getText()
                         + "' where id = " + Doctor.getSelectedDoctor().getId());
 
                 Main.alert(Alert.AlertType.INFORMATION, "Успешно", "Информация о враче изменена");

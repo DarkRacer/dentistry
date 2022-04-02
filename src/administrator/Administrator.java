@@ -27,6 +27,9 @@ public class Administrator {
     public Button schedule;
 
     @FXML
+    public Button changePassword;
+
+    @FXML
     public void record(ActionEvent actionEvent) {
         Stage Stage = new Stage();
         Parent root = null;
@@ -68,7 +71,7 @@ public class Administrator {
             e.printStackTrace();
         }
         Stage.setTitle("Создание пользователя");
-        Stage.setScene(new Scene(root, 319, 570));
+        Stage.setScene(new Scene(root, 370, 601));
         Stage.setResizable(false);
         Stage.centerOnScreen();
         Stage.show();
@@ -101,6 +104,25 @@ public class Administrator {
         }
         Stage.setTitle("График");
         Stage.setScene(new Scene(root, 600, 400));
+        Stage.setResizable(false);
+        Stage.centerOnScreen();
+        Stage.show();
+    }
+
+    @FXML
+    public void changePassword(ActionEvent actionEvent) {
+        Stage stage = (Stage) changePassword.getScene().getWindow();
+        stage.close();
+
+        Stage Stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/sample/password/password.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage.setTitle("Сменить пароль");
+        Stage.setScene(new Scene(root, 348, 165));
         Stage.setResizable(false);
         Stage.centerOnScreen();
         Stage.show();

@@ -30,6 +30,9 @@ public class Owner {
     public Button services;
 
     @FXML
+    public Button changePassword;
+
+    @FXML
     public void doctor(ActionEvent actionEvent) {
         Stage Stage = new Stage();
         Parent root = null;
@@ -120,6 +123,25 @@ public class Owner {
         }
         Stage.setTitle("Услуги");
         Stage.setScene(new Scene(root, 630, 400));
+        Stage.setResizable(false);
+        Stage.centerOnScreen();
+        Stage.show();
+    }
+
+    @FXML
+    public void changePassword(ActionEvent actionEvent) {
+        Stage stage = (Stage) changePassword.getScene().getWindow();
+        stage.close();
+
+        Stage Stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/sample/password/password.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage.setTitle("Сменить пароль");
+        Stage.setScene(new Scene(root, 348, 165));
         Stage.setResizable(false);
         Stage.centerOnScreen();
         Stage.show();

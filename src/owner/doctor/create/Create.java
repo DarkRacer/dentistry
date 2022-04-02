@@ -103,8 +103,8 @@ public class Create {
 
                 Statement statement2 = connect.getConnection().createStatement();
                 statement2.execute("insert into  public.doctor (surname, name, patronymic, phone, email, specialization, user_id) values (" +
-                        "' " + surname.getText() + "', '" + name.getText() + "', '" + patronymic.getText() + "', " +
-                        Integer.parseInt(phone.getText())+ ", '" + email.getText() + "', '" + specialization.getText() + "', " +userId +")");
+                        "' " + surname.getText() + "', '" + name.getText() + "', '" + patronymic.getText() + "', '" +
+                        phone.getText()+ "', '" + email.getText() + "', '" + specialization.getText() + "', " +userId +")");
 
                 Main.alert(Alert.AlertType.INFORMATION, "Успешно", "Врач добавлен");
                 Stage stage = (Stage) save.getScene().getWindow();

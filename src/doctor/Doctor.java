@@ -42,6 +42,9 @@ public class Doctor implements Initializable {
     public TableView<RecordDto> table;
 
     @FXML
+    public Button changePassword;
+
+    @FXML
     public TableColumn<RecordDto, String> patientColumn;
 
     @FXML
@@ -125,7 +128,7 @@ public class Doctor implements Initializable {
 
                 while (resultSet.next()) {
                     patientDto = new PatientDto(resultSet.getInt(2), resultSet.getString(1),
-                            LocalDate.from(resultSet.getDate(3).toLocalDate()), resultSet.getInt(4),
+                            LocalDate.from(resultSet.getDate(3).toLocalDate()), resultSet.getString(4),
                             resultSet.getString(5), resultSet.getString(6), resultSet.getString(7));
                 }
 
@@ -174,6 +177,25 @@ public class Doctor implements Initializable {
         }
     }
 
+    @FXML
+    public void changePassword(ActionEvent actionEvent) {
+        Stage stage = (Stage) changePassword.getScene().getWindow();
+        stage.close();
+
+        Stage Stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/sample/password/password.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage.setTitle("Сменить пароль");
+        Stage.setScene(new Scene(root, 348, 165));
+        Stage.setResizable(false);
+        Stage.centerOnScreen();
+        Stage.show();
+    }
+
     public void updateDoctorToCache() {
         try {
             connect = new Connect();
@@ -183,7 +205,7 @@ public class Doctor implements Initializable {
             while (resultSet.next()) {
                 doctor = new model.Doctor(resultSet.getInt("id"), resultSet.getString("surname"),
                         resultSet.getString("name"), resultSet.getString("patronymic"),
-                        resultSet.getInt("phone"), resultSet.getString("email"),
+                        resultSet.getString("phone"), resultSet.getString("email"),
                         resultSet.getString("specialization"),
                         resultSet.getInt("user_id"));
 

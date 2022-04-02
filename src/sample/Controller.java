@@ -25,7 +25,7 @@ import java.util.Objects;
 import static sample.Main.alert;
 
 public class Controller {
-    private Connect connect = null;
+    private static Connect connect = null;
     private static User user;
 
     @FXML
@@ -76,7 +76,7 @@ public class Controller {
                 boolean found = false;
                 while (resultSet.next()) {
                     UserType userType;
-                    if (Objects.equals(login.getText(), resultSet.getString("login")) ||
+                    if (Objects.equals(login.getText(), resultSet.getString("login")) &&
                                     Objects.equals(password.getText(), resultSet.getString("password"))) {
 
                         Statement statementUserType = connect.getConnection().createStatement();
@@ -93,7 +93,15 @@ public class Controller {
                 }
 
                 if (found) {
-                    closeAndOpenUserWindow(user.getType().name().toLowerCase(Locale.ROOT));
+                    if (Objects.equals(user.getType().name(), UserType.CLIENT.name())) {
+                        closeAndOpenUserWindow(user.getType().name().toLowerCase(Locale.ROOT), 600, 213);
+                    } else if (Objects.equals(user.getType().name(), UserType.DOCTOR.name())) {
+                        closeAndOpenUserWindow(user.getType().name().toLowerCase(Locale.ROOT), 600, 425);
+                    } else if (Objects.equals(user.getType().name(), UserType.ADMINISTRATOR.name())) {
+                        closeAndOpenUserWindow(user.getType().name().toLowerCase(Locale.ROOT), 445, 195);
+                    } else if (Objects.equals(user.getType().name(), UserType.OWNER.name())) {
+                        closeAndOpenUserWindow(user.getType().name().toLowerCase(Locale.ROOT), 401, 219);
+                    }
                 } else {
                     alert(Alert.AlertType.ERROR, "Ошибка", "Некорректный логин или пароль");
                 }
@@ -106,7 +114,7 @@ public class Controller {
         }
     }
 
-    private void closeAndOpenUserWindow(String type) {
+    private void closeAndOpenUserWindow(String type, int width, int height) {
         Stage stage = (Stage) loginSystem.getScene().getWindow();
         stage.close();
 
@@ -118,7 +126,7 @@ public class Controller {
             e.printStackTrace();
         }
         Stage.setTitle("Добро пожаловать");
-        Stage.setScene(new Scene(root, 600, 400));
+        Stage.setScene(new Scene(root, width, height));
         Stage.setResizable(false);
         Stage.centerOnScreen();
         Stage.show();
@@ -126,5 +134,31 @@ public class Controller {
 
     public static User getUserFromCache() {
         return user;
+    }
+
+    public static void updateCacheUser() {
+        try {
+            connect = new Connect();
+            Statement statement = connect.getConnection().createStatement();
+
+            final ResultSet resultSet = statement.executeQuery("select * from public.\"user\" where \"user\".id ='" + user.getId() + "'");
+
+            boolean found = false;
+            while (resultSet.next()) {
+                UserType userType;
+
+                    Statement statementUserType = connect.getConnection().createStatement();
+                    final ResultSet resultSetUserType = statementUserType.executeQuery("select * from public.user_type where id ="
+                            + resultSet.getInt("type"));
+                    while (resultSetUserType.next()) {
+                        userType = UserType.valueOf(resultSetUserType.getString("name"));
+                        user = new User(resultSet.getInt("id"), resultSet.getString("login"),
+                                resultSet.getString("password"), userType);
+                    }
+                }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            alert(Alert.AlertType.ERROR, "Ошибка", "Некорректный логин или пароль");
+        }
     }
 }

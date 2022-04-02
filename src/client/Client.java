@@ -43,6 +43,9 @@ public class Client implements Initializable {
     @FXML
     public Label error;
 
+    @FXML
+    public Button changePassword;
+
     @Override
     public void initialize(URL url, ResourceBundle rb){
         updatePatientToCache();
@@ -142,6 +145,25 @@ public class Client implements Initializable {
         }
     }
 
+    @FXML
+    public void changePassword(ActionEvent actionEvent) {
+        Stage stage = (Stage) changePassword.getScene().getWindow();
+        stage.close();
+
+        Stage Stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/sample/password/password.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage.setTitle("Сменить пароль");
+        Stage.setScene(new Scene(root, 348, 165));
+        Stage.setResizable(false);
+        Stage.centerOnScreen();
+        Stage.show();
+    }
+
     public static void updatePatientToCache() {
         try {
             connect = new Connect();
@@ -152,7 +174,7 @@ public class Client implements Initializable {
                 patient = new Patient(resultSet.getInt("id"), resultSet.getString("surname"),
                         resultSet.getString("name"), resultSet.getString("patronymic"),
                         LocalDate.from(resultSet.getDate("dateOfBirth").toLocalDate()),
-                        resultSet.getInt("phone"), resultSet.getString("email"),
+                        resultSet.getString("phone"), resultSet.getString("email"),
                         resultSet.getString("address"), resultSet.getString("allergies"),
                         resultSet.getInt("user_id"));
 

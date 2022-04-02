@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctor.Doctor">
+<AnchorPane prefHeight="425.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctor.Doctor">
    <children>
       <TableView fx:id="table" layoutX="12.0" layoutY="14.0" prefHeight="315.0" prefWidth="574.0">
         <columns>
@@ -16,5 +16,6 @@
       </TableView>
       <Button fx:id="info" layoutX="14.0" layoutY="338.0" mnemonicParsing="false" onAction="#see" prefHeight="39.0" prefWidth="282.0" text="Посмотреть информацию о пациенте" />
       <Button fx:id="payment" layoutX="304.0" layoutY="337.0" mnemonicParsing="false" onAction="#payment" prefHeight="39.0" prefWidth="282.0" text="Выставить счёт" />
+      <Button fx:id="changePassword" layoutX="11.0" layoutY="385.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="26.0" prefWidth="574.0" text="Сменить пароль" />
    </children>
 </AnchorPane>

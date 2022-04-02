@@ -18,6 +18,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -136,7 +137,9 @@ public class See implements Initializable {
                             " where s.name = '" + service.getValue() + "' ");
 
                     while (resultSet.next()) {
-                        setTable(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getInt(4));
+                        if (!resultSet.getString(1).isEmpty() && !Objects.equals(resultSet.getString(1), "  ")) {
+                            setTable(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getInt(4));
+                        }
                     }
 
                 } catch (SQLException throwables) {
