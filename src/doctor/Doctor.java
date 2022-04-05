@@ -68,7 +68,7 @@ public class Doctor implements Initializable {
             connect = new Connect();
             Statement statement = connect.getConnection().createStatement();
 
-            final ResultSet resultSet = statement.executeQuery("select CONCAT(p.patronymic, ' ', p.Name, ' ', p.Surname) as patient," +
+            final ResultSet resultSet = statement.executeQuery("select CONCAT(p.surname, ' ', p.Name, ' ', p.patronymic) as patient," +
                     " sch.date," +
                     " sch.time," +
                     " sch.id" +
@@ -115,7 +115,7 @@ public class Doctor implements Initializable {
                 connect = new Connect();
                 Statement statement = connect.getConnection().createStatement();
 
-                final ResultSet resultSet = statement.executeQuery("select CONCAT(p.patronymic, ' ', p.Name, ' ', p.Surname) as patient," +
+                final ResultSet resultSet = statement.executeQuery("select CONCAT(p.surname, ' ', p.Name, ' ', p.patronymic) as patient," +
                         " p.id," +
                         " p.\"dateOfBirth\"," +
                         " p.phone," +

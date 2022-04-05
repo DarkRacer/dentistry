@@ -89,7 +89,7 @@ public class Owner {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Stage.setTitle("График");
+        Stage.setTitle("Оплаты");
         Stage.setScene(new Scene(root, 671, 301));
         Stage.setResizable(false);
         Stage.centerOnScreen();
