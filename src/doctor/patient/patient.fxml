@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="413.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctor.patient.Patient">
+<AnchorPane prefHeight="459.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctor.patient.Patient">
    <children>
       <Label fx:id="fioLabel" layoutX="14.0" layoutY="14.0" text="ФИО" />
       <Label fx:id="fio" layoutX="61.0" layoutY="14.0" prefHeight="18.0" prefWidth="324.0" />
@@ -17,8 +17,9 @@
       <Label fx:id="email" layoutX="79.0" layoutY="105.0" prefHeight="18.0" prefWidth="313.0" />
       <Label fx:id="allergiesLabel" layoutX="14.0" layoutY="135.0" text="Аллергии" />
       <TextArea fx:id="allergies" layoutX="87.0" layoutY="135.0" prefHeight="90.0" prefWidth="314.0" />
-      <Button fx:id="save" layoutX="171.0" layoutY="373.0" mnemonicParsing="false" onAction="#save" text="Сохранить" />
+      <Button fx:id="save" layoutX="9.0" layoutY="418.0" mnemonicParsing="false" onAction="#save" prefHeight="26.0" prefWidth="394.0" text="Сохранить" />
       <Label fx:id="complaintsLabel" layoutX="14.0" layoutY="235.0" text="Жалобы" />
       <TextArea fx:id="complaints" layoutX="87.0" layoutY="235.0" prefHeight="131.0" prefWidth="314.0" />
+      <Button fx:id="card" layoutX="9.0" layoutY="384.0" mnemonicParsing="false" onAction="#card" prefHeight="26.0" prefWidth="394.0" text="Открыть карту пациента" />
    </children>
 </AnchorPane>

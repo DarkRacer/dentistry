@@ -139,7 +139,7 @@ public class Doctor implements Initializable {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Stage.setTitle("Информация о пользователе");
+                Stage.setTitle("Информация о пациенте");
                 Stage.setScene(new Scene(root, 417, 413));
                 Stage.setResizable(false);
                 Stage.centerOnScreen();

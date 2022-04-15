@@ -28,6 +28,9 @@ public class Patient implements Initializable {
     public Label complaintsLabel;
 
     @FXML
+    public Button card;
+
+    @FXML
     public TextArea complaints;
 
     @FXML
@@ -105,5 +108,10 @@ public class Patient implements Initializable {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    @FXML
+    public void card(ActionEvent actionEvent) {
+
     }
 }
