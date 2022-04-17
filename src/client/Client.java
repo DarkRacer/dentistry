@@ -21,6 +21,8 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import static sample.Controller.setUserFromCache;
+
 public class Client implements Initializable {
     private static Connect connect;
     private static Patient patient;
@@ -45,6 +47,9 @@ public class Client implements Initializable {
 
     @FXML
     public Button changePassword;
+
+    @FXML
+    public Button exit;
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -159,6 +164,26 @@ public class Client implements Initializable {
         }
         Stage.setTitle("Сменить пароль");
         Stage.setScene(new Scene(root, 348, 165));
+        Stage.setResizable(false);
+        Stage.centerOnScreen();
+        Stage.show();
+    }
+
+    @FXML
+    public void exit(ActionEvent actionEvent) {
+        Stage stage = (Stage) exit.getScene().getWindow();
+        stage.close();
+        setUserFromCache(null);
+        patient = null;
+        Stage Stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/sample/sample.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage.setTitle("Стоматология");
+        Stage.setScene(new Scene(root, 338, 174));
         Stage.setResizable(false);
         Stage.centerOnScreen();
         Stage.show();

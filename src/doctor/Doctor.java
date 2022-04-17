@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static sample.Controller.setUserFromCache;
+
 public class Doctor implements Initializable {
     private static PatientDto patientDto;
     private static model.Doctor doctor;
@@ -40,6 +42,9 @@ public class Doctor implements Initializable {
 
     @FXML
     public TableView<RecordDto> table;
+
+    @FXML
+    public Button exit;
 
     @FXML
     public Button changePassword;
@@ -191,6 +196,27 @@ public class Doctor implements Initializable {
         }
         Stage.setTitle("Сменить пароль");
         Stage.setScene(new Scene(root, 348, 165));
+        Stage.setResizable(false);
+        Stage.centerOnScreen();
+        Stage.show();
+    }
+
+    @FXML
+    public void exit(ActionEvent actionEvent) {
+        Stage stage = (Stage) exit.getScene().getWindow();
+        stage.close();
+        setUserFromCache(null);
+        recordDto = null;
+        doctor = null;
+        Stage Stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/sample/sample.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage.setTitle("Стоматология");
+        Stage.setScene(new Scene(root, 338, 174));
         Stage.setResizable(false);
         Stage.centerOnScreen();
         Stage.show();

@@ -16,6 +16,7 @@ import sample.Controller;
 import sample.Main;
 
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.ZoneId;
@@ -113,6 +114,19 @@ public class Info implements Initializable {
                             "values ('" + surname.getText() + "', '" + name.getText() + "', '" + patronymic.getText() + "', '" +
                             sqlDate + "', '" + phone.getText() + "', '" + email.getText() + "', '" + address.getText() + "', '" +
                             allergies.getText() + "', " + Controller.getUserFromCache().getId() + ")");
+
+                    Statement statement3 = connect.getConnection().createStatement();
+                    final ResultSet resultSet1 = statement3.executeQuery("select p.id from public.patient p where user_id = " + Controller.getUserFromCache().getId());
+
+                    int patientId = 0;
+                    while (resultSet1.next()) {
+                        patientId = resultSet1.getInt(1);
+                    }
+
+                    Statement statement4 = connect.getConnection().createStatement();
+
+                    statement4.execute("insert into public.card (teeth, patient_id) " +
+                            "values (' ', "+ patientId +")");
                 }
 
                 Main.alert(Alert.AlertType.INFORMATION, "Успешно", "Информация успешно изменена");

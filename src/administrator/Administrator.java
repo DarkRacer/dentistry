@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static sample.Controller.setUserFromCache;
+
 public class Administrator {
     @FXML
     public Button record;
@@ -28,6 +30,9 @@ public class Administrator {
 
     @FXML
     public Button changePassword;
+
+    @FXML
+    public Button exit;
 
     @FXML
     public void record(ActionEvent actionEvent) {
@@ -123,6 +128,25 @@ public class Administrator {
         }
         Stage.setTitle("Сменить пароль");
         Stage.setScene(new Scene(root, 348, 165));
+        Stage.setResizable(false);
+        Stage.centerOnScreen();
+        Stage.show();
+    }
+
+    @FXML
+    public void exit(ActionEvent actionEvent) {
+        Stage stage = (Stage) exit.getScene().getWindow();
+        stage.close();
+        setUserFromCache(null);
+        Stage Stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/sample/sample.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage.setTitle("Стоматология");
+        Stage.setScene(new Scene(root, 338, 174));
         Stage.setResizable(false);
         Stage.centerOnScreen();
         Stage.show();

@@ -78,6 +78,6 @@
       <ImageView fx:id="pic6" fitHeight="150.0" fitWidth="200.0" layoutX="460.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="12.0" layoutY="217.0" prefHeight="18.0" prefWidth="117.0" text="Снимки:" />
       <Button fx:id="diagnosis" layoutX="237.0" layoutY="579.0" mnemonicParsing="false" onAction="#diagnosis" prefHeight="38.0" prefWidth="210.0" text="Диагнозы" />
-      <Button fx:id="save" layoutX="462.0" layoutY="579.0" mnemonicParsing="false" onAction="#save" prefHeight="38.0" prefWidth="210.0" text="Сохранить" />
+      <Button fx:id="save" layoutX="462.0" layoutY="579.0" mnemonicParsing="false" onAction="#save" prefHeight="38.0" prefWidth="210.0" text="Сохранить изменения" />
    </children>
 </AnchorPane>

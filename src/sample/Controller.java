@@ -94,13 +94,13 @@ public class Controller {
 
                 if (found) {
                     if (Objects.equals(user.getType().name(), UserType.CLIENT.name())) {
-                        closeAndOpenUserWindow(user.getType().name().toLowerCase(Locale.ROOT), 600, 213);
+                        closeAndOpenUserWindow(user.getType().name().toLowerCase(Locale.ROOT), 600, 243);
                     } else if (Objects.equals(user.getType().name(), UserType.DOCTOR.name())) {
                         closeAndOpenUserWindow(user.getType().name().toLowerCase(Locale.ROOT), 600, 425);
                     } else if (Objects.equals(user.getType().name(), UserType.ADMINISTRATOR.name())) {
-                        closeAndOpenUserWindow(user.getType().name().toLowerCase(Locale.ROOT), 445, 195);
+                        closeAndOpenUserWindow(user.getType().name().toLowerCase(Locale.ROOT), 445, 206);
                     } else if (Objects.equals(user.getType().name(), UserType.OWNER.name())) {
-                        closeAndOpenUserWindow(user.getType().name().toLowerCase(Locale.ROOT), 401, 219);
+                        closeAndOpenUserWindow(user.getType().name().toLowerCase(Locale.ROOT), 401, 275);
                     }
                 } else {
                     alert(Alert.AlertType.ERROR, "Ошибка", "Некорректный логин или пароль");
@@ -134,6 +134,10 @@ public class Controller {
 
     public static User getUserFromCache() {
         return user;
+    }
+
+    public static void setUserFromCache(User newUser) {
+        user = newUser;
     }
 
     public static void updateCacheUser() {

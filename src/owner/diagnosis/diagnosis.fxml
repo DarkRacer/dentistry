@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="owner.diagnosis.Diagnosis">
+    <children>
+        <TableView fx:id="table" layoutX="15.0" layoutY="145.0" prefHeight="242.0" prefWidth="473.0">
+            <columns>
+                <TableColumn fx:id="nameColumn" prefWidth="183.39999675750732" text="Диагноз" />
+                <TableColumn fx:id="descriptionColumn" prefWidth="288.59999084472656" text="Описание" />
+            </columns>
+        </TableView>
+        <Label fx:id="nameLabel" layoutX="14.0" layoutY="14.0" text="Название" />
+        <TextField fx:id="nameField" layoutX="88.0" layoutY="10.0" prefHeight="26.0" prefWidth="251.0" />
+        <Label fx:id="description" layoutX="12.0" layoutY="45.0" text="Описание" />
+        <TextArea fx:id="descriptionField" layoutX="88.0" layoutY="45.0" prefHeight="87.0" prefWidth="251.0" />
+        <Button fx:id="save" layoutX="354.0" layoutY="10.0" mnemonicParsing="false" onAction="#save" prefHeight="34.0" prefWidth="134.0" text="Сохранить" />
+        <Button fx:id="change" layoutX="354.0" layoutY="54.0" mnemonicParsing="false" onAction="#change" prefHeight="34.0" prefWidth="134.0" text="Изменить" />
+        <Button fx:id="delete" layoutX="354.0" layoutY="97.0" mnemonicParsing="false" onAction="#delete" prefHeight="34.0" prefWidth="134.0" text="Удалить" />
+    </children>
+</AnchorPane>

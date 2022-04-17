@@ -127,6 +127,18 @@ public class Create {
                         sqlDate + "', '" + phone.getText() + "', '" + email.getText() + "', '" + address.getText() + "', '" +
                         allergies.getText() + "', " + userId + ")");
 
+                Statement statement3 = connect.getConnection().createStatement();
+                final ResultSet resultSet1 = statement3.executeQuery("select p.id from public.patient p where user_id = " + userId);
+
+                int patientId = 0;
+                while (resultSet1.next()) {
+                    patientId = resultSet1.getInt(1);
+                }
+
+                Statement statement4 = connect.getConnection().createStatement();
+
+                statement4.execute("insert into public.card (teeth, patient_id) " +
+                        "values (' ', "+ patientId +")");
 
                 Main.alert(Alert.AlertType.INFORMATION, "Успешно", "Пользователь создан");
                 Stage stage = (Stage) save.getScene().getWindow();

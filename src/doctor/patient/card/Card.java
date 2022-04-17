@@ -16,7 +16,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -25,7 +24,6 @@ import sample.Main;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -33,15 +31,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.UUID;
 
 public class Card implements Initializable {
-    private String[] statuses = {"O", "R", "C", "P", "Pt", "П", "А", "I", "II", "III", "K", "И"};
+    private String[] statuses = {" ", "O", "R", "C", "P", "Pt", "П", "А", "I", "II", "III", "K", "И"};
     private ObservableList<String> status = FXCollections.observableArrayList();
     private Connect connect;
     private PatientDto patientDto;
+    private HashMap<String, ComboBox<String>> mapTeeth;
 
     @FXML
     public Button info;
@@ -173,7 +175,7 @@ public class Card implements Initializable {
     public void initialize(URL url, ResourceBundle rb){
         patientDto = Doctor.getPatientForDoctor();
         initComboBox();
-
+        setInfoAboutTeeth();
         try {
             connect = new Connect();
             Statement statement = connect.getConnection().createStatement();
@@ -280,7 +282,7 @@ public class Card implements Initializable {
             e.printStackTrace();
         }
         Stage.setTitle("Диагнозы пациента");
-        Stage.setScene(new Scene(root, 692, 630));
+        Stage.setScene(new Scene(root, 683, 576));
         Stage.setResizable(false);
         Stage.centerOnScreen();
         Stage.show();
@@ -288,6 +290,25 @@ public class Card implements Initializable {
 
     @FXML
     public void save(ActionEvent actionEvent) {
+        String data = "";
+        for (Map.Entry<String, ComboBox<String>> entry : mapTeeth.entrySet()) {
+            if (entry.getValue().getValue() != null) {
+                data += entry.getKey() + ":" + entry.getValue().getValue() + ",";
+            } else {
+                data += entry.getKey() + ": ,";
+            }
+        }
+
+        try {
+            connect = new Connect();
+            Statement statement = connect.getConnection().createStatement();
+
+            statement.execute("update card set teeth ='" + data + "' where patient_id=" + patientDto.getId());
+
+            Main.alert(Alert.AlertType.INFORMATION, "Успешно", "Информация о зубах сохранена");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void initComboBox(){
@@ -297,8 +318,6 @@ public class Card implements Initializable {
         r8down.setItems(status);
         r7up.setItems(status);
         r7down.setItems(status);
-        r6up.setItems(status);
-        r6down.setItems(status);
         r6up.setItems(status);
         r6down.setItems(status);
         r5up.setItems(status);
@@ -318,8 +337,6 @@ public class Card implements Initializable {
         l7down.setItems(status);
         l6up.setItems(status);
         l6down.setItems(status);
-        l6up.setItems(status);
-        l6down.setItems(status);
         l5up.setItems(status);
         l5down.setItems(status);
         l4up.setItems(status);
@@ -330,15 +347,62 @@ public class Card implements Initializable {
         l2down.setItems(status);
         l1up.setItems(status);
         l1down.setItems(status);
+
+        mapTeeth = new HashMap<>();
+        mapTeeth.put("r8up", r8up);
+        mapTeeth.put("r8down", r8down);
+        mapTeeth.put("r7up", r7up);
+        mapTeeth.put("r7down", r7down);
+        mapTeeth.put("r6up", r6up);
+        mapTeeth.put("r6down", r6down);
+        mapTeeth.put("r5up", r5up);
+        mapTeeth.put("r5down", r5down);
+        mapTeeth.put("r4up", r4up);
+        mapTeeth.put("r4down", r4down);
+        mapTeeth.put("r3up", r3up);
+        mapTeeth.put("r3down", r3down);
+        mapTeeth.put("r2up", r2up);
+        mapTeeth.put("r2down", r2down);
+        mapTeeth.put("r1up", r1up);
+        mapTeeth.put("r1down", r1down);
+        mapTeeth.put("l8up", l8up);
+        mapTeeth.put("l8down", l8down);
+        mapTeeth.put("l7up", l7up);
+        mapTeeth.put("l7down", l7down);
+        mapTeeth.put("l6up", l6up);
+        mapTeeth.put("l6down", l6down);
+        mapTeeth.put("l5up", l5up);
+        mapTeeth.put("l5down", l5down);
+        mapTeeth.put("l4up", l4up);
+        mapTeeth.put("l4down", l4down);
+        mapTeeth.put("l3up", l3up);
+        mapTeeth.put("l3down", l3down);
+        mapTeeth.put("l2up", l2up);
+        mapTeeth.put("l2down", l2down);
+        mapTeeth.put("l1up", l1up);
+        mapTeeth.put("l1down", l1down);
     }
 
     private void setInfoAboutTeeth() {
-        //TODO: implement default value
-        //r8up: K; r8down: R
-        for (int i=0; i <= status.size(); i++) {
+        String teeth = "";
+        try {
+            connect = new Connect();
+            Statement statement = connect.getConnection().createStatement();
+            ResultSet rs = statement.executeQuery("select c.teeth from card c where patient_id ="+ patientDto.getId());
 
+            while (rs.next()) {
+                teeth = rs.getString(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-       //r8up.set;
+        List<String> teeths = Arrays.asList(teeth.split(","));
+        for (String t : teeths) {
+            if (mapTeeth.get(t.split(":")[0]) != null){
+                mapTeeth.get(t.split(":")[0]).setValue(t.split(":")[1]);
+            }
+        }
+
         r8down.setItems(status);
         r7up.setItems(status);
         r7down.setItems(status);
