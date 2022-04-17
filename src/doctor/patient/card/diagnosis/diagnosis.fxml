@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="576.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="doctor.patient.card.diagnosis.Diagnosis">
+   <children>
+      <Label fx:id="diagnosisLabel" layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="157.0" text="Диагнозы пациента" />
+      <TableView fx:id="patientDiagnos" layoutX="14.0" layoutY="32.0" prefHeight="208.0" prefWidth="658.0">
+        <columns>
+          <TableColumn fx:id="name" prefWidth="205.6000394821167" text="Диагноз" />
+          <TableColumn fx:id="description" prefWidth="283.9999237060547" text="Описание" />
+            <TableColumn fx:id="actual" prefWidth="168.7999267578125" text="Действительность" />
+        </columns>
+      </TableView>
+      <Button fx:id="complete" layoutX="14.0" layoutY="248.0" mnemonicParsing="false" onAction="#complete" prefHeight="26.0" prefWidth="658.0" text="Вылечен" />
+      <TableView fx:id="listDiagnosis" layoutX="12.0" layoutY="316.0" prefHeight="208.0" prefWidth="658.0">
+         <columns>
+            <TableColumn fx:id="lname" prefWidth="257.60002422332764" text="Диагноз" />
+            <TableColumn fx:id="ldescription" prefWidth="398.4000244140625" text="Описание" />
+         </columns>
+      </TableView>
+      <Button fx:id="assign" layoutX="12.0" layoutY="536.0" mnemonicParsing="false" onAction="#assign" prefHeight="26.0" prefWidth="658.0" text="Назначить диагноз" />
+      <Label fx:id="listDiagnosisLabel" layoutX="12.0" layoutY="295.0" prefHeight="18.0" prefWidth="129.0" text="Список диагнозов" />
+   </children>
+</AnchorPane>

@@ -140,7 +140,7 @@ public class Doctor implements Initializable {
                     e.printStackTrace();
                 }
                 Stage.setTitle("Информация о пациенте");
-                Stage.setScene(new Scene(root, 417, 413));
+                Stage.setScene(new Scene(root, 417, 459));
                 Stage.setResizable(false);
                 Stage.centerOnScreen();
                 Stage.show();

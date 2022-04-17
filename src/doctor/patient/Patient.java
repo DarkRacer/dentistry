@@ -4,7 +4,10 @@ import DB.Connect;
 import doctor.Doctor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,6 +16,7 @@ import javafx.stage.Stage;
 import model.dto.PatientDto;
 import sample.Main;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -112,6 +116,17 @@ public class Patient implements Initializable {
 
     @FXML
     public void card(ActionEvent actionEvent) {
-
+        Stage Stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("card/card.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage.setTitle("Карта пациента");
+        Stage.setScene(new Scene(root, 692, 630));
+        Stage.setResizable(false);
+        Stage.centerOnScreen();
+        Stage.show();
     }
 }

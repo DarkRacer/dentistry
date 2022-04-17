@@ -1,0 +1,1 @@
+This folder for save teeth picture. Name format patientId_uuid
